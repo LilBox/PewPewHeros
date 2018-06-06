@@ -15,8 +15,8 @@ import RPG.Utils;
 public class BossBailey extends Entity {
 
 	private final static double FIRE_RATE = 4500, FIRE_RANGE = 300, PLAYER_TRACK_RANGE = 600, DAMAGE = 45, SPEED = 20,
-			MOVE_SPEED = 4, HEALTH_GROWTH = 350, BASE_HP = 1000, DROP_RATE = 100, ATTACK_PERCENT = 50,
-			ATTACK_BASE = 100, ATTACK_GROWTH = 50, DEFENSE_BASE = 10, DEFENSE_GROWTH = 2.5;
+			MOVE_SPEED = 4, HEALTH_GROWTH = 750, BASE_HP = 2500, DROP_RATE = 100, ATTACK_PERCENT = 50,
+			ATTACK_BASE = 100, ATTACK_GROWTH = 50, DEFENSE_BASE = 15, DEFENSE_GROWTH = 2.5;
 
 	private double count;
 
@@ -76,7 +76,7 @@ public class BossBailey extends Entity {
 	public void update(Level l) {
 		if (this.getHealth() <= 0) {
 			((Player) this.getKilledBy())
-					.increaseXP(Utils.calculateXP(this.getKilledBy().getLevel(), this.getLevel(), 3));
+					.increaseXP(Utils.calculateXP(this.getKilledBy().getLevel(), this.getLevel(), this.getLevel() * 3));
 			l.removeEntity(this);
 		}
 		this.reduceCCDuration(l.getRefreshTime());

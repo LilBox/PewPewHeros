@@ -15,8 +15,8 @@ import RPG.Utils;
 public class BasicEnemy extends Entity {
 
 	private final static double FIRE_RATE = 2000, FIRE_RANGE = 300, FIRE_DISTANCE = 450, PLAYER_TRACK_RANGE = 600,
-			DAMAGE = 10, SPEED = 20, MOVE_SPEED = 4, HEALTH_GROWTH = 50, BASE_HP = 75, DROP_RATE = 10,
-			ATTACK_PERCENT = 50, ATTACK_BASE = 40, ATTACK_GROWTH = 10, DEFENSE_BASE = 5, DEFENSE_GROWTH = 0.5;
+			DAMAGE = 20, SPEED = 20, MOVE_SPEED = 4, HEALTH_GROWTH = 300, BASE_HP = 75, DROP_RATE = 10,
+			ATTACK_PERCENT = 50, ATTACK_BASE = 40, ATTACK_GROWTH = 10, DEFENSE_BASE = 7, DEFENSE_GROWTH = 0.5;
 
 	private double count;
 
@@ -58,7 +58,7 @@ public class BasicEnemy extends Entity {
 		g.fillArc(1 * image.getWidth() / 5 - image.getHeight() / 10, image.getHeight() / 5 + 1,
 				(int) Math.round((healthBarXLen > image.getHeight() / 5 ? image.getHeight() / 5 : healthBarXLen)),
 				image.getHeight() / 5 - 2, -90, -180);
-		
+
 		g.fillArc(4 * image.getWidth() / 5 - image.getHeight() / 10, image.getHeight() / 5 + 1,
 				(int) Math.round((healthBarXLen > image.getHeight() / 5 + 3 * image.getWidth() / 5
 						? healthBarXLen - image.getHeight() / 5 - 3 * image.getWidth() / 5
@@ -77,7 +77,7 @@ public class BasicEnemy extends Entity {
 	public void update(Level l) {
 		if (this.getHealth() <= 0) {
 			((Player) this.getKilledBy())
-					.increaseXP(Utils.calculateXP(this.getKilledBy().getLevel(), this.getLevel(), 3));
+					.increaseXP(Utils.calculateXP(this.getKilledBy().getLevel(), this.getLevel(), this.getLevel() * 3));
 			l.removeEntity(this);
 		}
 		this.reduceCCDuration(l.getRefreshTime());

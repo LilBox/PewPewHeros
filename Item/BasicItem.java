@@ -51,7 +51,8 @@ public class BasicItem extends Item {
 
 	@Override
 	public String getDescription() {
-		return String.format("Grants %.1f attack, and %.1f defense.", this.getAttack(), this.getDefense());
+		return String.format("Level %d item, Grants %.1f attack, and %.1f defense.", this.getLevel(), this.getAttack(),
+				this.getDefense());
 	}
 
 }

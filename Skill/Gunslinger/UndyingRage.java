@@ -41,7 +41,7 @@ public class UndyingRage extends Skill {
 
 	@Override
 	public Skill onUse(Level l) {
-		l.getPlayer().increaseHP(l.getPlayer().getMaxHealth() * UndyingRage.HEAL_PERCENT);
+		l.getPlayer().increaseHP(l.getPlayer().getMaxHealth() * UndyingRage.HEAL_PERCENT / 100);
 		this.setCount(this.getCooldown());
 		return this;
 	}
